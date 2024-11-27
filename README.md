@@ -57,7 +57,8 @@ conda activate phylocnn
 
 ### **Statistical Evaluation**
 - PCA and Summary Statistics:
-    - `sumstats.py`: Extract summary statistics from simulated datasets.
-    - PCA scripts available in `notebooks/`.
+    - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
+    - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
+    - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
 
 ---
