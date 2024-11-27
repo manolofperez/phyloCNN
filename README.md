@@ -18,7 +18,7 @@ conda activate phylocnn
 1. **Birth-Death Model Simulations** (Python)
     - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
     - `TreeGen_BD_refactored.py`: Simulate trees using BD, BDEI, or BDSS parameters.
-    - Command Examples:
+    - Command Examples (remove the explanatory text between "<>" and keep only the value):
       ```bash
       python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
@@ -27,7 +27,7 @@ conda activate phylocnn
 2. **BiSSE Model Simulations** (R + Python)
     - Generate parameters with `generate_parameters.py` (Python).
     - Simulate trees with `BiSSE_simulator.R` (R).
-    - Command Examples:
+    - Command Examples (remove the explanatory text between "<>" and keep only the values):
       ```bash
       python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
       Rscript BiSSE_simulator.R parameters_BiSSE.txt <indice=1> <seed_base=12345> <step=10> <nb_retrials=100> BiSSE_trees.nwk BiSSE_stats.txt BiSSE_params.txt
