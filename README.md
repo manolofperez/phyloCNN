@@ -2,8 +2,8 @@
 
 This repository contains scripts, notebooks, and tools to perform simulations, encoding, model selection, parameter estimation, and posterior distribution analyses using PhyloCNN.
 
-# From the article
-Perez M.F. and Gascuel O. PhyloCNN: Improving tree representation and neural network architecture for deep learning from trees in phylodynamics and diversification studies.
+# Article
+Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural network architecture for deep learning from trees in phylodynamics and diversification studies.
 
 ## **Installation**
 To set up the required Python environment, use the following command:
@@ -17,17 +17,20 @@ conda activate phylocnn
 ### **Simulations**
 1. **Birth-Death Model Simulations** (Python)
     - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
-    - `TreeGen_BD_refactored.py`: Simulate trees using BD, BDEI, or BDSS parameters.
-    - Command Examples (remove the explanatory text between "<>" and keep only the value):
+    - Command Examples:
       ```bash
       python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
+      ```
+   - [Simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models): Simulate trees using BD, BDEI, or BDSS parameters.
+    - Command Examples:
+      ```bash
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
       ```
 
 2. **BiSSE Model Simulations** (R + Python)
     - Generate parameters with `generate_parameters.py` (Python).
     - Simulate trees with `BiSSE_simulator.R` (R).
-    - Command Examples (remove the explanatory text between "<>" and keep only the values):
+    - Command Examples:
       ```bash
       python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
       Rscript BiSSE_simulator.R parameters_BiSSE.txt <indice=1> <seed_base=12345> <step=10> <nb_retrials=100> BiSSE_trees.nwk BiSSE_stats.txt BiSSE_params.txt
