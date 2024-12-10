@@ -1,12 +1,12 @@
 # PhyloCNN
 
-This repository contains scripts, notebooks, and tools to perform simulations, encoding, model selection, parameter estimation, and posterior distribution analyses using PhyloCNN.
+This repository contains scripts and notebooks to perform simulations, encoding, model selection, parameter estimation, and posterior distribution analyses using PhyloCNN.
 
 # Article
 Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural network architecture for deep learning from trees in phylodynamics and diversification studies.
 
 ## **Installation**
-To set up the required Python environment, use the following command:
+To set up the required Python environment (using the file `environment.yml`), use the following command:
 ```bash
 conda env create -f environment.yml
 conda activate phylocnn
