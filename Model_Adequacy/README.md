@@ -20,8 +20,9 @@ Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural netw
     |--------------------------------------|----------------------------|------------------------------------------------------------|
     | Prior distribution       | 4                          | y_5-8                                                       |
     | PhyloCNN Posterior     | 18                         | max_L, mean_s_time, x_12-18, y_2-10                        |
-    *max_L: maximal number of lineages; mean_s_time: mean time between two consecutive down steps (mean sampling time); x_1-20: x coordinates of the LTT plot; y_1-20: x coordinates of the LTT time plot.
     
+    *max_L: maximal number of lineages; mean_s_time: mean time between two consecutive down steps (mean sampling time); x_1-20: x coordinates of the LTT plot; y_1-20: x coordinates of the LTT time plot.
+
 2. **Primates Dataset** (Jupyter Notebooks)
 
 ---
