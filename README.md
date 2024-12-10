@@ -21,7 +21,7 @@ conda activate phylocnn
       ```bash
       python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
       ```
-   - [Simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models): Simulate trees using BD, BDEI, or BDSS parameters.
+   - The output from `generate_parameters.py` should then be used with the [simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models): Simulate trees using BD, BDEI, or BDSS parameters.
     - Command Examples:
       ```bash
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
@@ -29,7 +29,7 @@ conda activate phylocnn
 
 2. **BiSSE Model Simulations** (R + Python)
     - Generate parameters with `generate_parameters.py` (Python).
-    - Simulate trees with `BiSSE_simulator.R` (R).
+    - Use tre output to simulate trees with `BiSSE_simulator.R` (R).
     - Command Examples:
       ```bash
       python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
