@@ -29,14 +29,14 @@ conda activate phylocnn
       ```
       For BDEI model, where -m=model; -r=R0; -i=1/γ; -e=incubation factor (ε/γ); -s=tree size; -n=number of samples; -p=sampling probability; -o: output file
       
-     ```bash
-      python generate_parameters.py -m BDEI -r 1,5 -i 1,10 -e 0.2,5 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDEI.txt
+      ```bash
+      python generate_parameters.py -m BDSS -r 1,5 -i 1,10 -x 3,10 -f 0.05,0.2 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDSS.txt
       ```
-      For BDSS model, where      -m=model; -r=R0; -i=1/γ; -x=XSS ; -f=fSS; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
+      For BDSS model, where -m=model; -r=R0; -i=1/γ; -x=XSS ; -f=fSS; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
 
-   - The output from `generate_parameters.py` should then be used with the [simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models). 
-   It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500; [Voznica et al., 2022](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models)): Simulate trees using BD, BDEI, or BDSS parameters.
+    - The output from `generate_parameters.py` should then be used with the [simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models). 
+    It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500; [Voznica et al., 2022](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models)): Simulate trees using BD, BDEI, or BDSS parameters.
     - Command Examples:
       ```bash
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
