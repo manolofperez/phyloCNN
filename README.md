@@ -17,15 +17,6 @@ conda activate phylocnn
 ### **Simulations**
 1. **Birth-Death Model Simulations** (Python)
 
-python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
-BDEI model (-m=model; -r=R0; -i=1/γ; -e=incubation factor (ε/γ); -s=tree size; -n=number of samples; -p=sampling probability; -o: output file):
-python generate_parameters.py -m BDEI -r 1,5 -i 1,10 -e 0.2,5 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDEI.txt
-BDSS model (-m=model; -r=R0; -i=1/γ; -x=XSS ; -f=fSS; -s=tree size; 
--p=sampling probability; -n=number of samples; -o: output file):
-python generate_parameters.py -m BDSS -r 1,5 -i 1,10 -x 3,10 -f 0.05,0.2 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDSS.txt
-
-
-
     - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
     - Command Examples:
       ```bash
