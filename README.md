@@ -22,17 +22,17 @@ conda activate phylocnn
       ```bash
       python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
       ```
-      For BD model, where -m=model; -r=R0; -i=1/γ; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
+      For BD model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
       ```bash
       python generate_parameters.py -m BDEI -r 1,5 -i 1,10 -e 0.2,5 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDEI.txt
       ```
-      For BDEI model, where -m=model; -r=R0; -i=1/γ; -e=incubation factor (ε/γ); -s=tree size; -n=number of samples; -p=sampling probability; -o: output file
+      For BDEI model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -e=incubation factor (ε/γ); -s=tree size; -n=number of samples; -p=sampling probability; -o: output file
       
       ```bash
       python generate_parameters.py -m BDSS -r 1,5 -i 1,10 -x 3,10 -f 0.05,0.2 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDSS.txt
       ```
-      For BDSS model, where -m=model; -r=R0; -i=1/γ; -x=XSS ; -f=fSS; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
+      For BDSS model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -x=*X*<sub>SS</sub> ; -f=*f*<sub>SS</sub>; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
 
     - The output from `generate_parameters.py` should then be used with the [simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models). 
@@ -44,10 +44,14 @@ conda activate phylocnn
 
 2. **BiSSE Model Simulations** (R + Python)
     - Generate parameters with `generate_parameters.py` (Python).
-    - Use tre output to simulate trees with `BiSSE_simulator.R` (R).
-    - Command Examples:
       ```bash
       python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
+      ```
+      For BiSSE model, where -m=model; -l0 =λ<sub>0</sub>; -t=τ; -l1=ratio between λ<sub>1</sub> and λ<sub>0</sub>; -q=ratio between *q* (= *q*<sub>01</sub> = *q*<sub>10</sub>) and λ<sub>0</sub>; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
+
+    - Use the output to simulate trees with [`BiSSE_simulator.R` (R) from (Lambert et al. 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/simulators/BiSSE).
+    The values between <> are the ones we used for the parameters required by the script (indice, seed number, step, number of retrials, and output file names).
+      ```
       Rscript BiSSE_simulator.R parameters_BiSSE.txt <indice=1> <seed_base=12345> <step=10> <nb_retrials=100> BiSSE_trees.nwk BiSSE_stats.txt BiSSE_params.txt
       ```
 
