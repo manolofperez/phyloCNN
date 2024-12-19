@@ -77,13 +77,13 @@ conda activate phylocnn
     - `CI_HIV.ipynb`: Compute confidence intervals for HIV dataset.
     - `CI_primates.ipynb`: Compute confidence intervals for primates dataset.
 
-### **Model Adequacyn**
+### **Model Adequacy**
 
 1. **Posterior Sampling and Summary Statistics**
     - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
     - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
 
-- PCA:
+2. **PCA**:
     - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
     - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
 
