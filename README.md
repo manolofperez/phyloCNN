@@ -84,7 +84,6 @@ conda activate phylocnn
     - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
 
 2. **PCA**:
-    - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
-    - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
-
+    - `PCA_HIV.ipynb`: Perform PCAs on the SumStats obtained from Prior and Posterior distributions of parameters used with the HIV dataset.
+    - `PCA_primates.ipynb`: Perform PCAs on the SumStats obtained from Prior and Posterior distributions of parameters used with the primates dataset
 ---
