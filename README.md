@@ -1,33 +1,90 @@
-# PhyloCNN - Model Adequacy
+# PhyloCNN
 
-This repository contains notebooks to perform sanity checks (model adequacy) on prior and posterior results used with PhyloCNN.
+This repository contains scripts and notebooks to perform simulations, encoding, model selection, parameter estimation, and posterior distribution analyses using PhyloCNN.
 
 # Article
 Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural network architecture for deep learning from trees in phylodynamics and diversification studies.
 
+## **Installation**
+To set up the required Python environment (using the file `environment.yml`), use the following command:
+```bash
+conda env create -f environment.yml
+conda activate phylocnn
+```
 
 ## **Scripts and Notebooks**
 
-### **Posterior Sampling and Summary Statistics**
-  - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
-  - `BiSSE_SumStats.ipynb`: Extract summary statistics (SumStats) from trees simulated under BiSSE.
+### **Simulations**
+1. **Birth-Death Model Simulations** (Python)
 
-### **PCA**
-  - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
-  - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
+    - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
+    - Command Examples:
+      ```bash
+      python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
+      ```
+      For BD model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
-### **Results**
-1. **HIV Dataset**
-For the 10,000 simulations obtained using the prior and postrior distributions of parameters, we add the number of SumStats rejected, for which the minimum and maximum values obtained from the 10K new simulations generated from the posterior do not contain the value observed in the empirical HIV dataset. We also provide the names of all rejected SumStats (according to [Saulnier et al., 2017](https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1005416.t003)). It is important to note that all rejected SumStats are related to the LTT plot, which is expected due to non-random sampling and partner notification in the HIV dataset ([Zhukova and Gascuel, 2024](https://www.medrxiv.org/content/10.1101/2024.09.09.24313296v1)).
+      ```bash
+      python generate_parameters.py -m BDEI -r 1,5 -i 1,10 -e 0.2,5 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDEI.txt
+      ```
+      For BDEI model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -e=incubation factor (ε/γ); -s=tree size; -n=number of samples; -p=sampling probability; -o: output file
+      
+      ```bash
+      python generate_parameters.py -m BDSS -r 1,5 -i 1,10 -x 3,10 -f 0.05,0.2 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BDSS.txt
+      ```
+      For BDSS model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -x=*X*<sub>SS</sub> ; -f=*f*<sub>SS</sub>; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
-    | BDSS (HIV priors)                       | # SumStats outside Min-Max | SumStats names (according to [Saulnier et al., 2017](https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1005416.t003))<sup>1</sup>         |
-    |--------------------------------------|----------------------------|------------------------------------------------------------|
-    | Prior distribution       | 4                          | y_5-8                                                       |
-    | PhyloCNN Posterior     | 18                         | max_L, mean_s_time, x_12-18, y_2-10                        |
-    
-    <sup>1</sup>max_L: maximal number of lineages; mean_s_time: mean time between two consecutive down steps (mean sampling time); x_1-20: x coordinates of the LTT plot; y_1-20: x coordinates of the LTT time plot.
 
-2. **Primates Dataset**
-    All SumStats of the empirical dataset where recovered within the interval of SumStats obtained from the 10,000 simulations (Prior and Posterior).
+    - The output from `generate_parameters.py` should then be used with the [simulators from (Voznica et al. 2022)](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models). 
+    It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500; [Voznica et al., 2022](https://github.com/evolbioinfo/phylodeep/tree/main/simulators/bd_models)): Simulate trees using BD, BDEI, or BDSS parameters.
+    - Command Examples:
+      ```bash
+      python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
+      ```
+
+2. **BiSSE Model Simulations** (R + Python)
+    - Generate parameters with `generate_parameters.py` (Python).
+      ```bash
+      python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
+      ```
+      For BiSSE model, where -m=model; -l0 =λ<sub>0</sub>; -t=τ; -l1=ratio between λ<sub>1</sub> and λ<sub>0</sub>; -q=ratio between *q* (= *q*<sub>01</sub> = *q*<sub>10</sub>) and λ<sub>0</sub>; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
+
+    - Use the output to simulate trees with `BiSSE_simulator.R` (R) [from (Lambert et al. 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/simulators/BiSSE).
+    The values between <> are the ones we used for the parameters required by the script (indice, seed number, step, number of retrials, and output file names).
+      ```
+      Rscript BiSSE_simulator.R parameters_BiSSE.txt <indice=1> <seed_base=12345> <step=10> <nb_retrials=100> BiSSE_trees.nwk BiSSE_stats.txt BiSSE_params.txt
+      ```
+
+### **Encoding**
+1. **Phylogenies Encoding** (Python)
+    - `PhyloCNN_Encoding_PhyloDyn.py`: Encode BD, BDEI, and BDSS trees.
+    - `PhyloCNN_Encoding_BiSSE.py`: Encode BiSSE trees.
+    - Command Examples:
+      ```bash
+      python PhyloCNN_Encoding_PhyloDyn.py -t BD_trees.nwk -o Encoded_trees_BD.csv
+      python PhyloCNN_Encoding_BiSSE.py -t BiSSE_trees.nwk -o Encoded_trees_BiSSE.csv
+      ```
+
+### **Preprocessing, Training, and Predictions**
+1. **Preprocessing and Training** (Jupyter Notebooks)
+    - `PhyloCNN_Train_PhyDyn_ModelSelection.ipynb`: Model selection for BD, BDEI, BDSS.
+    - `PhyloCNN_Train_BD.ipynb`: Parameter estimation for BD model.
+    - `PhyloCNN_Train_BDEI.ipynb`: Parameter estimation for BDEI model.
+    - `PhyloCNN_Train_BDSS.ipynb`: Parameter estimation for BDSS model.
+    - `PhyloCNN_Train_BiSSE.ipynb`: Parameter estimation for BiSSE model.
+
+2. **Confidence Intervals and Posterior Distributions**:
+    - `CI_HIV.ipynb`: Compute confidence intervals for HIV dataset.
+    - `CI_primates.ipynb`: Compute confidence intervals for primates dataset.
+
+### **Model Adequacyn**
+
+1. **Posterior Sampling and Summary Statistics**
+    - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
+    - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
+
+- PCA:
+    - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
+    - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
 
 ---
