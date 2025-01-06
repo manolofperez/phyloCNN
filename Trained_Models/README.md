@@ -32,14 +32,9 @@ Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural netw
 ### **Phylodynamics HIV dataset**
 - Model Classification:
     - `Trained_2Generation_PhyDyn_HIV.json` and `Trained_2Generation_PhyDyn_HIV.h5`: Trained model to classify phylodynamics models using 2-Generation context PhyloCNN using simulations with the HIV priors.
-    - `Trained_1Generation_PhyDyn_HIV.json` and `Trained_1Generation_PhyDyn_HIV.h5`: Trained model to classify phylodynamics model using 1-Generation context PhyloCNN using simulations with the HIV priors.
-    - `Trained_NoContext_PhyDyn_HIV.json` and `Trained_NoContext_PhyDyn_HIV.h5`: Trained model to classify phylodynamics model using No_context PhyloCNN using simulations with the HIV priors.
 
 - BDSS:
     - `Trained_2Generation_BDSS_HIV.json` and `Trained_2Generation_BDSS_HIV.h5`: Trained model to estimate parameters under BDSS using 2-Generation context PhyloCNN using simulations with the HIV priors.
-    - `Trained_1Generation_BDSS_HIV.json` and `Trained_1Generation_BDSS_HIV.h5`: Trained model to estimate parameters under BDSS using 1-Generation context PhyloCNN using simulations with the HIV priors.
-    - `Trained_NoContext_BDSS_HIV.json` and `Trained_NoContext_BDSS_HIV.h5`: Trained model to estimate parameters under BDSS using No_context PhyloCNN using simulations with the HIV priors.
-
 
 ### **BiSSE Simulated data (also used on the empirical primates dataset)**
 
