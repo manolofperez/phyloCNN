@@ -12,10 +12,6 @@ Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural netw
   - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
   - `BiSSE_SumStats.ipynb`: Extract summary statistics (SumStats) from trees simulated under BiSSE.
 
-### **PCA**
-  - `PCA_HIV.ipynb`: Compute confidence intervals for HIV dataset.
-  - `PCA_primates.ipynb`: Compute confidence intervals for primates dataset.
-
 ### **Results**
 1. **HIV Dataset**
 For the 10,000 simulations obtained using the prior and postrior distributions of parameters, we add the number of SumStats rejected, for which the minimum and maximum values obtained from the 10K new simulations generated from the posterior do not contain the value observed in the empirical HIV dataset. We also provide the names of all rejected SumStats (according to [Saulnier et al., 2017](https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1005416.t003)). It is important to note that all rejected SumStats are related to the LTT plot, which is expected due to non-random sampling and partner notification in the HIV dataset ([Zhukova and Gascuel, 2024](https://www.medrxiv.org/content/10.1101/2024.09.09.24313296v1)).
