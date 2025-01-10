@@ -82,8 +82,4 @@ conda activate phylocnn
 1. **Posterior Sampling and Summary Statistics**
     - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
     - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
-
-2. **PCA**:
-    - `PCA_HIV.ipynb`: Perform PCAs on the SumStats obtained from Prior and Posterior distributions of parameters used with the HIV dataset.
-    - `PCA_primates.ipynb`: Perform PCAs on the SumStats obtained from Prior and Posterior distributions of parameters used with the primates dataset
 ---
