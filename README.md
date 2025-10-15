@@ -15,12 +15,12 @@ conda activate phylocnn
 ## **Scripts and Notebooks**
 
 ### **Simulations**
-1. **Birth-Death Model Simulations** (Python)
+1. **Phylodynamics Birth-Death Model Simulations** (Python)
 
     - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
     - Command Examples:
       ```bash
-      python generate_parameters.py -m BD -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
+      python generate_parameters.py -m BD_PhyDyn -r 1,5 -i 1,10 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
       ```
       For BD model, where -m=model; -r=*R*<sub>0</sub>; -i=1/γ; -s=tree size; -p=sampling probability; -n=number of samples; -o: output file
 
@@ -42,8 +42,21 @@ conda activate phylocnn
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
       ```
 
-2. **BiSSE Model Simulations** (R + Python)
-    - Generate parameters with `generate_parameters.py` (Python).
+2. **Diversificatin Birth-Death Models Simulations** (R + Python)
+    - `generate_parameters.py` (Python): Generate input parameters for BD, and BiSSE models.
+    - Command Examples for BD:
+      ```bash
+      python generate_parameters.py -m BD_Div -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
+      ```
+      For BD model, where -m=model; -l =λ; -t=τ; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
+
+    - The output from `generate_parameters.py` should then be used with the [simulator from (Lambert et al. 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/simulators/BD). 
+    It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500.
+      ```bash
+      python BD_simulator.py parameters_BD.txt <max_time=500> > BD_trees.nwk
+      ```
+
+      - Command Examples for BISSE:      
       ```bash
       python generate_parameters.py -m BISSE -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BiSSE.txt
       ```
@@ -71,6 +84,7 @@ conda activate phylocnn
     - `PhyloCNN_Train_BD.ipynb`: Parameter estimation for BD model.
     - `PhyloCNN_Train_BDEI.ipynb`: Parameter estimation for BDEI model.
     - `PhyloCNN_Train_BDSS.ipynb`: Parameter estimation for BDSS model.
+    - `PhyloCNN_Train_Div_ModelSelection.ipynb`: Model selection in diversification.
     - `PhyloCNN_Train_BiSSE.ipynb`: Parameter estimation for BiSSE model.
 
 2. **Confidence Intervals and Posterior Distributions**:
