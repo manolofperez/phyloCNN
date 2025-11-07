@@ -42,7 +42,7 @@ conda activate phylocnn
       python TreeGen_BD_refactored.py parameters_BD.txt <max_time=500> > BD_trees.nwk
       ```
 
-2. **Diversificatin Birth-Death Models Simulations** (R + Python)
+2. **Diversification Birth-Death Models Simulations** (R + Python)
     - `generate_parameters.py` (Python): Generate input parameters for BD, and BiSSE models.
     - Command Examples for BD:
       ```bash
