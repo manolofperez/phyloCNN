@@ -15,8 +15,11 @@ Perez M.F. and Gascuel O.PhyloCNN: Improving tree representation and neural netw
 
     - `CombineTreeTraits.R` : R-script that combined a phylogeny with a file containing a list of species and their respective traits.
 
+    - `PhyloCNN_Train_PhyDyn_ModelSelection_Temperature.ipynb` : Model selection for the HIV dataset using simulations under BD, BDEI and BDSS. This notebook includes a temperature scaling approach [(Guo et al., 2017)](https://arxiv.org/abs/1706.04599).
+
 3. ## **Primates input files**
 
     - `primatesUltra.tre` : Phylogenetic tree with 260 taxa from (Fabre et al. Mol Phyl Evol 2009). Available at [(Lambert et al. Syst Biol 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/data/empirical/primates_data).
 
     - `data_traits.csv` : Species list with their respective trait data. Available at [(Lambert et al. Syst Biol 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/data/empirical/primates_data).
+
