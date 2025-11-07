@@ -70,7 +70,7 @@ conda activate phylocnn
 
 ### **Encoding**
 1. **Phylogenies Encoding** (Python)
-    - `PhyloCNN_Encoding_PhyloDyn.py`: Encode BD, BDEI, and BDSS trees.
+    - `PhyloCNN_Encoding_PhyloDyn.py`: Encode BD, BDEI, BDSS and BD_div trees.
     - `PhyloCNN_Encoding_BiSSE.py`: Encode BiSSE trees.
     - Command Examples:
       ```bash
