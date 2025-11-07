@@ -99,6 +99,19 @@ def main():
             "default_output_file": "parameters_BDSS.txt",
             "default_n_samples": 10000
         },
+        "BD_div": {
+            "param_names": ['turnover_rate', 'birth_rate', 'sampling_frac', 'tree_size'],
+            "short_names": {'turnover_rate': 't', 'birth_rate': 'l', 'sampling_frac': 'p', 'tree_size': 's'},
+            "default_bounds": {
+                'turnover_rate': [0.01, 1],
+                'birth_rate': [0.01, 0.5],
+                'sampling_frac': [0.01, 1],
+                'tree_size': [200, 500]
+
+            },
+            "default_output_file": "parameters_BD_div.txt",
+            "default_n_samples": 10000
+        },
         "BISSE": {
             "param_names": ['lambda1', 'turnover', 'lambda2_ratio', 'q01_ratio', 'tree_size', 'sampling_frac'],
             "short_names": {'lambda1': 'l0', 'turnover': 't', 'lambda2_ratio': 'l1', 'q01_ratio': 'q', 'tree_size': 's', 'sampling_frac': 'p'},
@@ -117,7 +130,7 @@ def main():
 
     # Set up argument parser
     parser = argparse.ArgumentParser(description='Generate parameter samples for various models.')
-    parser.add_argument('-m', '--model', type=str, choices=['BD', 'BDEI', 'BDSS', 'BISSE'], default='BDSS',
+    parser.add_argument('-m', '--model', type=str, choices=['BD', 'BDEI', 'BDSS', 'BD_div', 'BISSE'], default='BDSS',
                         help='Model name (default: BDSS)')
     parser.add_argument('-n', '--n_samples', type=int, help='Number of samples to generate')
     parser.add_argument('-o', '--output', type=str, help='Output file name')
@@ -328,6 +341,47 @@ def main():
             'x_transmission',
             'fraction_1',
             'infectious_period'
+        ])
+
+        # Save the final parameters to the specified output file
+        np.savetxt(
+            output_file,
+            params_final,
+            header=header,
+            delimiter='\t',
+            comments='',
+            fmt='%f'
+        )
+
+    elif model == "BD_div":
+        # Extract parameters
+        turnover_rate = params[:, 0]
+        birth_rate = params[:, 1]
+        sampling_frac = params[:, 2]
+        tree_size = params[:, 3].astype(int)
+
+        # Compute intermediate values
+        extinction_rate = birth_rate * turnover_rate
+
+        # Prepare the final parameter array
+        index = np.arange(len(params))
+        params_final = np.column_stack((
+            index,
+            turnover_rate,
+            birth_rate,
+            extinction_rate,
+            sampling_frac,
+            tree_size
+        ))
+
+        # Define header for the output file
+        header = '\t'.join([
+            'index',
+            'turnover_rate',
+            'birth_rate',
+            'extinction_rate',
+            'sampling_frac',
+            'tree_size'
         ])
 
         # Save the final parameters to the specified output file
