@@ -46,14 +46,14 @@ conda activate phylocnn
     - `generate_parameters.py` (Python): Generate input parameters for BD, and BiSSE models.
     - Command Examples for BD:
       ```bash
-      python generate_parameters.py -m BD_Div -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD.txt
+      python generate_parameters.py -m BD_div -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD_div.txt
       ```
       For BD model, where -m=model; -l =λ; -t=τ; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
 
     - The output from `generate_parameters.py` should then be used with the [simulator from (Lambert et al. 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/simulators/BD). 
     It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500.
       ```bash
-      python BD_simulator.py parameters_BD.txt <max_time=500> > BD_trees.nwk
+      python BD_simulator.py parameters_BD_div.txt <max_time=500> > BD_trees.nwk
       ```
 
       - Command Examples for BISSE:      
