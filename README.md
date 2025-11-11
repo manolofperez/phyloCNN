@@ -51,7 +51,7 @@ conda activate phylocnn
       For BD model, where -m=model; -l =λ; -t=τ; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
 
     - The output from `generate_parameters.py` should then be used with the [simulator from (Lambert et al. 2023)](https://github.com/JakubVoz/deeptimelearning/tree/main/simulators/BD). 
-    It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500.
+    It requires the simulator to be called along with the parameter file generated in the previous step (e.g., parameters_BD.txt) and the maximum simulation time (with a default of 500).
       ```bash
       python BD_simulator.py parameters_BD_div.txt <max_time=500> > BD_trees.nwk
       ```
@@ -84,7 +84,6 @@ conda activate phylocnn
     - `PhyloCNN_Train_BD.ipynb`: Parameter estimation for BD model.
     - `PhyloCNN_Train_BDEI.ipynb`: Parameter estimation for BDEI model.
     - `PhyloCNN_Train_BDSS.ipynb`: Parameter estimation for BDSS model.
-    - `PhyloCNN_Train_Div_ModelSelection.ipynb`: Model selection in diversification.
     - `PhyloCNN_Train_BiSSE.ipynb`: Parameter estimation for BiSSE model.
 
 2. **Confidence Intervals and Posterior Distributions**:
