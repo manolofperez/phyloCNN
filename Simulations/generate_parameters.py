@@ -103,8 +103,8 @@ def main():
             "param_names": ['turnover_rate', 'birth_rate', 'sampling_frac', 'tree_size'],
             "short_names": {'turnover_rate': 't', 'birth_rate': 'l', 'sampling_frac': 'p', 'tree_size': 's'},
             "default_bounds": {
-                'turnover_rate': [0.01, 1],
-                'birth_rate': [0.01, 0.5],
+                'turnover_rate': [0.0, 1.0],
+                'birth_rate': [0.01, 1.0],
                 'sampling_frac': [0.01, 1],
                 'tree_size': [200, 500]
 
