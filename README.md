@@ -46,7 +46,7 @@ conda activate phylocnn
     - `generate_parameters.py` (Python): Generate input parameters for BD, and BiSSE models.
     - Command Examples for BD:
       ```bash
-      python generate_parameters.py -m BD_div -l0 0.01,1.0 -t 0,1 -l1 0.1,1.0 -q 0.01,0.1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD_div.txt
+      python generate_parameters.py -m BD_div -l 0.01,1.0 -t 0,1 -s 200,500 -p 0.01,1 -n 10000 -o parameters_BD_div.txt
       ```
       For BD model, where -m=model; -l =λ; -t=τ; -s =tree size; -n = number of samples; -p = sampling probability; -o = output file
 
