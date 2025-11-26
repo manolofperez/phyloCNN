@@ -14,7 +14,7 @@ conda activate phylocnn
 
 ## **Scripts and Notebooks**
 
-### **Simulations**
+### **Simulations Folder**
 1. **Phylodynamics Birth-Death Model Simulations** (Python)
 
     - `generate_parameters.py`: Generate input parameters for BD, BDEI, and BDSS models.
@@ -68,7 +68,7 @@ conda activate phylocnn
       Rscript BiSSE_simulator.R parameters_BiSSE.txt <indice=1> <seed_base=12345> <step=10> <nb_retrials=100> BiSSE_trees.nwk BiSSE_stats.txt BiSSE_params.txt
       ```
 
-### **Encoding**
+### **Encoding Folder**
 1. **Phylogenies Encoding** (Python)
     - `PhyloCNN_Encoding_PhyloDyn.py`: Encode BD, BDEI, BDSS and BD_div trees.
     - `PhyloCNN_Encoding_BiSSE.py`: Encode BiSSE trees.
@@ -78,21 +78,44 @@ conda activate phylocnn
       python PhyloCNN_Encoding_BiSSE.py -t BiSSE_trees.nwk -o Encoded_trees_BiSSE.csv
       ```
 
-### **Preprocessing, Training, and Predictions**
-1. **Preprocessing and Training** (Jupyter Notebooks)
+### **Preprocessing and Training Folder**
+1. **Preprocessing, Training, and Predictions** (Jupyter Notebooks)
     - `PhyloCNN_Train_PhyDyn_ModelSelection.ipynb`: Model selection for BD, BDEI, BDSS.
     - `PhyloCNN_Train_BD.ipynb`: Parameter estimation for BD model.
     - `PhyloCNN_Train_BDEI.ipynb`: Parameter estimation for BDEI model.
     - `PhyloCNN_Train_BDSS.ipynb`: Parameter estimation for BDSS model.
     - `PhyloCNN_Train_BiSSE.ipynb`: Parameter estimation for BiSSE model.
 
-2. **Confidence Intervals and Posterior Distributions**:
+### **CI folder**
+1. **Confidence Intervals and Posterior Distributions**:
     - `CI_HIV.ipynb`: Compute confidence intervals for HIV dataset.
     - `CI_primates.ipynb`: Compute confidence intervals for primates dataset.
 
-### **Model Adequacy**
-
+### **Model Adequacy Folder**
+This folder has its own README file
 1. **Posterior Sampling and Summary Statistics**
     - `SampleDistribution_kde.py`: Samples parameter values from the posterior distribution using gaussian Kernel Density Estimate (KDE).  
     - `BiSSE_SumStats.ipynb`: Extract summary statistics from trees simulated under BiSSE.
+  
+### **Empirical_Datasets Folder**
+This folder has its own README file
+1. **Empirical Phylogegenies for the HIV and the primates (with traits) datasets**
+   - This folder contains the two empirical phylogenies to be analyzed.
+
+### **Test_Sets folder**
+1. **Simulations from the test set**
+    - `BD`: Phylogenies (.nwk.gz) and parameter values (.csv.gz) for the BD model.
+    - `BDEI`: Phylogenies (.nwk.gz) and parameter values (.csv.gz) for the BDEI model.
+    - `BDSS`: Phylogenies (.nwk.gz) and parameter values (.csv.gz) for the BDSS model.
+    - `BiSSE`: Phylogenies (.nwk.gz) and parameter values (.csv.gz) for the BiSSE model.
+
+### **Trained_Models folder**  
+This folder has its own README file
+1. **Trained neural networks for model selection an parameter estimation**
+    - This folder contains the trained neural network models obtained with PhyloCNN.
+  
+### **Tutorial_ModelSelection folder**  
+1. **Tutorial to perform model selection on the HIV datset** (Jupyter Notebook)
+   - `Tutorial_Phylodynamics_ModelSelection.ipynb`: This notebook illustrates how to train a network to peform model selection on the HIV dataset.
+   
 ---
